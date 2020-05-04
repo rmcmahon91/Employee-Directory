@@ -35,7 +35,7 @@ const [search,setSearch] = useState("")
     console.log(value)
 
     let newEmployeeList = employeeListState.original.filter(employee => {
-         return employee.name.first.toLowerCase().indexOf(value.toLowerCase()) > -1 || employee.name.last.toLowerCase().indexOf(value.toLowerCase()) > -1
+        return employee.name.first.toLowerCase().indexOf(value.toLowerCase()) > -1 || employee.name.last.toLowerCase().indexOf(value.toLowerCase()) > -1
     })
 
     setEmployeeListState({
