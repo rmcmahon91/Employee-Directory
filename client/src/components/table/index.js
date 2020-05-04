@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import EmployeeContext from "../../utils/EmployeeContext";
 export default function Table(props) {
+  const employeeStateList = useContext(EmployeeContext);
+  console.log("hello", employeeStateList.results);
   return (
     <div className="table">
       <table class="table">
@@ -16,16 +19,24 @@ export default function Table(props) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td><img src="https://randomuser.me/api/portraits/men/95.jpg"/></td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
+          {employeeStateList.results.length > 0
+            ? employeeStateList.results.map((employee) => {
+                return (
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>
+                      <img src={employee.picture.thumbnail} />
+                    </td>
+                        <td>{employee.name.first}</td>
+                        <td>{employee.name.last}</td>
+                        <td>{employee.email}</td>
+                        <td>{employee.dob.age}</td>
+                        <td>{employee.phone}</td>
+                        <td>{employee.cell}</td>
+                  </tr>
+                );
+              })
+            : ""}
         </tbody>
       </table>
     </div>
